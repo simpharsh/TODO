@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Consolas&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+/* For stickies header maybe? Or just keep clean */
+
+:root {
+  --bg-color: #333;
+  /* Dark board background */
+  --note-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+}
+
+body {
+  margin: 0;
+  font-family: 'Consolas', monospace;
+  background-color: var(--bg-color);
+  color: #333;
+  overflow-y: auto;
+  /* Allow board scroll */
+}
+
+/* Board Layout */
+.app-board {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.board-container {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  /* Stack from top */
+  gap: 20px;
+  overflow-y: auto;
+  /* Scroll inside board */
+  flex: 1;
+}
+
+/* Sticky Note */
+.sticky-note {
+  width: 250px;
+  min-height: 250px;
+  padding: 15px;
+  box-shadow: var(--note-shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+  position: relative;
+  border-bottom-right-radius: 60px 5px;
+  /* Slight paper curl effect */
+}
+
+.sticky-note:hover {
+  transform: scale(1.02);
+  z-index: 10;
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+  padding-bottom: 5px;
+}
+
+.note-date {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-weight: bold;
+  color: #444;
+  cursor: pointer;
+  width: 130px;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 5px;
+  color: #666;
+}
+
+.delete-btn:hover {
+  color: red;
+}
+
+.note-content {
+  flex: 1;
+  background: transparent;
+  border: none;
+  resize: none;
+  outline: none;
+  font-family: 'Consolas', monospace;
+  /* Or 'Reenie Beanie' for fun */
+  font-size: 16px;
+  line-height: 1.5;
+  width: 100%;
+  overflow: hidden;
+  /* Auto-size handles height */
+  min-height: 150px;
+}
+
+.note-footer {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.add-task-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #555;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-task-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Floating Add Button for Board */
+.add-note-fab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #0078d7;
+  color: white;
+  font-size: 30px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-note-fab:hover {
+  background-color: #0063b1;
+  transform: scale(1.1);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
